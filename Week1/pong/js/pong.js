@@ -95,7 +95,7 @@ function main()
     }
     if(ball.x > c.width)
     {
-        ball.x = c.width
+        ball.x = c.width/2
         ball.vx = -ball.vx
     }
     if(ball.y < 0)
@@ -105,7 +105,7 @@ function main()
     }
     if(ball.y > c.height)
     {
-        ball.y = c.height
+        ball.y = c.height/2
         ball.vy = -ball.vy
        
     }

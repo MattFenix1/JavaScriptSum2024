@@ -8,6 +8,17 @@ var timer = setInterval(main, 1000/60)
 //global friction variable
 var fy = .97
 
+//Player setup
+var Players = new Array();
+Players[0] = new Player();
+Players[1] = new Player();
+Players.pad = new Box();
+
+//Paddle Assignment
+var Pads = new Array();
+Pads[0] = Players[0].pad;
+Pads[1] = Players[1].pad;
+
 //p1 setup
 var p1 = new Box();
 p1.w = 20
@@ -95,7 +106,7 @@ function main()
     }
     if(ball.x > c.width)
     {
-        ball.x = c.width
+        ball.x = c.width/2
         ball.vx = -ball.vx
     }
     if(ball.y < 0)
@@ -105,7 +116,7 @@ function main()
     }
     if(ball.y > c.height)
     {
-        ball.y = c.height
+        ball.y = c.height/2
         ball.vy = -ball.vy
        
     }
