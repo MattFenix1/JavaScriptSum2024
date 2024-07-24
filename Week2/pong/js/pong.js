@@ -19,22 +19,18 @@ var Pads = new Array();
 Pads[0] = Players[0].pad;
 Pads[1] = Players[1].pad;
 
-//Score
-var scoreLeft = 0
-var scoreRight = 0
+//Pads[0] setup
+Pads[0] = new Box();
+Pads[0].w = 20
+Pads[0].h = 150
+Pads[0].x = 0 + Pads[0].w/2
 
-//p1 setup
-var p1 = new Box();
-p1.w = 20
-p1.h = 150
-p1.x = 0 + p1.w/2
-
-//p2 setup
-var p2 = new Box();
-p2.w = 20
-p2.h = 150
-p2.x = 700 - p2.w/2
-p2.color = `green`
+//Pads[1] setup
+Pads[1] = new Box();
+Pads[1].w = 20
+Pads[1].h = 150
+Pads[1].x = 700 - Pads[1].w/2
+Pads[1].color = `green`
 
 //ball setup
 var ball = new Box();
@@ -44,62 +40,65 @@ ball.vx = -2
 ball.vy = -2
 ball.color = `black`
 
+//scoreboard selector
+scoreBoard = document.querySelectorAll("#score div")
+
 function main()
 {
     //erases the canvas
     ctx.clearRect(0,0,c.width,c.height)
     
-    //p1 accelerates when key is pressed 
+    //Pads[0] accelerates when key is pressed 
     if(keys[`w`])
     {
-       p1.vy += -p1.force
+       Pads[0].vy += -Pads[0].force
     }
 
     if(keys[`s`])
     {
-        p1.vy += p1.force
+        Pads[0].vy += Pads[0].force
     }
     //applies friction
-    p1.vy *= fy
+    Pads[0].vy *= fy
     //player movement
-    p1.move();
+    Pads[0].move();
 
-    //p2 accelerates when key is pressed
+    //Pads[1] accelerates when key is pressed
     if(keys[`ArrowUp`])
     {
-        p2.vy += -p2.force
+        Pads[1].vy += -Pads[1].force
     }
 
     if(keys[`ArrowDown`])
     {
-        p2.vy += p2.force
+        Pads[1].vy += Pads[1].force
     }
     //applies friction
-    p2.vy *= fy
+    Pads[1].vy *= fy
     //player movement
-    p2.move();
+    Pads[1].move();
 
     //ball movement
     ball.move()
 
-    //p1 collision
-    if(p1.y < 0+p1.h/2)
+    //Pads[0] collision
+    if(Pads[0].y < 0+Pads[0].h/2)
     {
-        p1.y = 0+p1.h/2
+        Pads[0].y = 0+Pads[0].h/2
     }
-    if(p1.y > c.height-p1.h/2)
+    if(Pads[0].y > c.height-Pads[0].h/2)
     {
-        p1.y = c.height-p1.h/2
+        Pads[0].y = c.height-Pads[0].h/2
     }
 
-    //p2 collision
-    if(p2.y < 0+p2.h/2)
+    //Pads[1] collision
+    if(Pads[1].y < 0+Pads[1].h/2)
     {
-        p2.y = 0+p2.h/2
+        Pads[1].y = 0+Pads[1].h/2
     }
-    if(p2.y > c.height-p2.h/2)
+    if(Pads[1].y > c.height-Pads[1].h/2)
     {
-        p2.y = c.height-p2.h/2
+        Pads[1].y = c.height-Pads[1].h/2
     }
 
     //ball collision 
@@ -107,15 +106,15 @@ function main()
     {
         ball.x = c.width/2
         ball.y  =c.height/2
-        scoreRight += 1
-        console.log(scoreLeft+" | "+scoreRight)
+        Players[1].score += 1
+        console.log(Players[0].score+" | "+Players[1].score)
     }
     if(ball.x > c.width)
     {
         ball.x = c.width/2
         ball.vx = -ball.vx
-        scoreLeft += 1
-        console.log(scoreLeft+" | "+scoreRight)
+        Players[0].score += 1
+        console.log(Players[0].score+" | "+Players[1].score)
     }
     if(ball.y < 0)
     {
@@ -128,22 +127,29 @@ function main()
         ball.vy = -ball.vy       
     }
 
-    //p1 with ball collision
-    if(ball.collide(p1))
+    //Pads[0] with ball collision
+    if(ball.collide(Pads[0]))
     {
-        ball.x = p1.x + p1.w/2 + ball.w/2
+        ball.x = Pads[0].x + Pads[0].w/2 + ball.w/2
         ball.vx = -ball.vx;
     }
 
-    //p2 with ball collision
-    if(ball.collide(p2))
+    //Pads[1] with ball collision
+    if(ball.collide(Pads[1]))
     {
-        ball.x = p2.x - p2.w/2 - ball.w/2
+        ball.x = Pads[1].x - Pads[1].w/2 - ball.w/2
         ball.vx = -ball.vx;
     }
 
     //draw the objects
-    p1.draw()
-    p2.draw()
+    Pads[0].draw()
+    Pads[1].draw()
     ball.draw()
+
+    //scoreboard writer
+    for(var i=0; i < scoreBoard.length; i++){
+        scoreBoard[i].innerHTML = Players[i].score
+        console.log(scoreBoard.length)
+    }
+
 }
