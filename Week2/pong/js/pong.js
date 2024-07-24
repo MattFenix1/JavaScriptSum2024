@@ -19,6 +19,10 @@ var Pads = new Array();
 Pads[0] = Players[0].pad;
 Pads[1] = Players[1].pad;
 
+//Score
+var scoreLeft = 0
+var scoreRight = 0
+
 //p1 setup
 var p1 = new Box();
 p1.w = 20
@@ -103,11 +107,15 @@ function main()
     {
         ball.x = c.width/2
         ball.y  =c.height/2
+        scoreRight += 1
+        console.log(scoreLeft+" | "+scoreRight)
     }
     if(ball.x > c.width)
     {
         ball.x = c.width/2
         ball.vx = -ball.vx
+        scoreLeft += 1
+        console.log(scoreLeft+" | "+scoreRight)
     }
     if(ball.y < 0)
     {
@@ -116,9 +124,8 @@ function main()
     }
     if(ball.y > c.height)
     {
-        ball.y = c.height/2
-        ball.vy = -ball.vy
-       
+        ball.y = c.height
+        ball.vy = -ball.vy       
     }
 
     //p1 with ball collision

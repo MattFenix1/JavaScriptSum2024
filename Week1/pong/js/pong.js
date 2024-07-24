@@ -105,7 +105,7 @@ function main()
     }
     if(ball.y > c.height)
     {
-        ball.y = c.height/2
+        ball.y = c.height
         ball.vy = -ball.vy
        
     }
