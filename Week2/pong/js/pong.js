@@ -58,10 +58,6 @@ function main()
     {
         Pads[0].vy += Pads[0].force
     }
-    //applies friction
-    Pads[0].vy *= fy
-    //player movement
-    Pads[0].move();
 
     //Pads[1] accelerates when key is pressed
     if(keys[`ArrowUp`])
@@ -73,32 +69,25 @@ function main()
     {
         Pads[1].vy += Pads[1].force
     }
-    //applies friction
-    Pads[1].vy *= fy
-    //player movement
-    Pads[1].move();
 
+    //Pad friction and movement
+    for(var i=0; i < Pads.length; i++){
+        Pads[i].vy *= fy
+        Pads[i].move()
+    }
     //ball movement
     ball.move()
 
-    //Pads[0] collision
-    if(Pads[0].y < 0+Pads[0].h/2)
-    {
-        Pads[0].y = 0+Pads[0].h/2
-    }
-    if(Pads[0].y > c.height-Pads[0].h/2)
-    {
-        Pads[0].y = c.height-Pads[0].h/2
-    }
-
-    //Pads[1] collision
-    if(Pads[1].y < 0+Pads[1].h/2)
-    {
-        Pads[1].y = 0+Pads[1].h/2
-    }
-    if(Pads[1].y > c.height-Pads[1].h/2)
-    {
-        Pads[1].y = c.height-Pads[1].h/2
+    //Pads collision
+    for(var i=0; i < Pads.length; i++){
+        if(Pads[i].y < 0+Pads[i].h/2)
+        {
+            Pads[i].y = 0+Pads[i].h/2
+        }
+        if(Pads[i].y > c.height-Pads[i].h/2)
+        {
+            Pads[i].y = c.height-Pads[i].h/2
+        }
     }
 
     //ball collision 
@@ -142,8 +131,9 @@ function main()
     }
 
     //draw the objects
-    Pads[0].draw()
-    Pads[1].draw()
+    for(var i=0; i<Pads.length; i++){
+        Pads[i].draw()
+    }
     ball.draw()
 
     //scoreboard writer
@@ -151,5 +141,4 @@ function main()
         scoreBoard[i].innerHTML = Players[i].score
         console.log(scoreBoard.length)
     }
-
 }
