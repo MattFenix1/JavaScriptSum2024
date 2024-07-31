@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p onclick="changeToRed('blue')">Words</p>
+    <p onclick="changeToRed('blue')">Words</p>
+    <script>
+        let p = document.querySelectorAll(`p`)
+        //Event Handlers
+        function changeToRed(color){
+            p[0].style.color = color
+        }
+
+        p[0].onmouseover = function(e){
+            this.style.fontWeight = `bold`
+        }
+        p[0].onmouseout = e => e.target.style.fontWeight = `normal`
+
+        var add = (a,b) => a+b
+        var sum = add(5,5)
+        p[0].innerText = sum
+
+        for(let i=0; i<p.length; i++){
+            p[i].addEventListener(`click`, (e)=>{
+            e.target.innerText = add(Number(e.target.innerText), Number(e.target.innerText))
+            e.target.removeEventListener(`click`, change)
+            })
+        }   
+
+        function change(e){
+            e.target.innerText = add(Number(e.target.innerText), Number(e.target.innerText))
+            e.target.removeEventListener(`click`, change)
+        }
+
+        function changeWord(newWord=`Hello`, output=function(a){return a})
+        {
+            p[1].innerText = newWord
+            output(p[1].innerText)
+        }
+        changeWord(`What's Up`, function(a){alert(a)})
+
+    </script>
+</body>
+</html>

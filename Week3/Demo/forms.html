@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://www.google.com">Google</a>
+    <form action="#" method="get">
+        <input type="text" placeholder="name" name="name">
+        <button>Do Something</button>
+
+    </form>
+    <script>
+        var a = document.querySelector(`a`);
+        a.addEventListener(`click`, (e)=>{
+            e.preventDefault();
+            window.location=`http://www.neit.edu`;
+        })
+
+        var input = document.querySelector(`input`)
+        input.addEventListener(`focus`, (e)=>{
+            e.target.style.backgroundColor = `yellow`
+        })
+
+        var input = document.querySelector(`input`)
+        input.addEventListener(`blur`, (e)=>{
+            e.target.style.backgroundColor = `white`
+        })
+
+        var input = document.querySelector(`input`)
+        input.addEventListener(`change`, (e)=>{
+            e.target.value = `Mr t`
+        })
+
+        var input = document.querySelector(`input`)
+        input.addEventListener(`input`, (e)=>{
+            e.target.value += `Mr t`
+        })
+    </script>
+</body>
+</html>
