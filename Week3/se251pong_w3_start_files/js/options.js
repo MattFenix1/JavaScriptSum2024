@@ -6,14 +6,7 @@
 var opt = document.querySelector('.sides')
 function showHide()
 {
-    if(opt.style.display === "none")
-    {
-        opt.style.display = "block";
-    }
-    else
-    {
-        opt.style.display = "none";
-    }
+    opt.classList.toggle("hidden")
 }
 /*---------
     Program the two fill inputs to do the following:
@@ -24,7 +17,15 @@ function showHide()
         . Show the fill's hex code in the output div 
 
 -----------*/
-
+var fill = Array.from(document.querySelectorAll(`input[class="fill"]`))
+var output = Array.from(document.querySelectorAll(`.output`))
+fill.forEach((i,num)=>{
+    i.addEventListener(`input`, (e)=>{
+        e.target.style.color = i.value;
+        o[num].fill = i.value;
+        output.innerHTML = i.value;
+    })
+})
 /*---------
     Program the six key inputs to do the following:
     . Display the correct key names for each player   
