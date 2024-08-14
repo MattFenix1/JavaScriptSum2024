@@ -20,10 +20,12 @@ function showHide()
 var fill = Array.from(document.querySelectorAll(`input[class="fill"]`))
 var output = Array.from(document.querySelectorAll(`.output`))
 fill.forEach((i,num)=>{
+    i.value =pad[num].fill
+    i.nextElementSibling.innerHTML = i.value
     i.addEventListener(`input`, (e)=>{
         e.target.style.color = i.value;
         o[num].fill = i.value;
-        output.innerHTML = i.value;
+        i.nextElementSibling.innerHTML = i.value
     })
 })
 /*---------
@@ -34,3 +36,40 @@ fill.forEach((i,num)=>{
         .Change the player's key to the value of the input
         .Show the player's key in the output div 
 -----------*/
+var keyu = Array.from(document.querySelectorAll(`input[class="u"]`))
+var keyd = Array.from(document.querySelectorAll(`input[class="d"]`))
+var keyf = Array.from(document.querySelectorAll(`input[class="s"]`))
+
+keyu.forEach((i,num)=>{
+    i.value=player[num].keys[i.classList[0]]
+    i.nextElementSibling.innerHTML=i.value
+    i.addEventListener('focus', (e)=>{
+        currentState = `pause`
+    })
+    i.addEventListener(`input`, (e)=>{
+        player[num].keys[e.target.classList[0]] = i.value
+        i.nextElementSibling.innerHTML=i.value
+    })
+})
+keyd.forEach((i,num)=>{
+    i.value=player[num].keys[i.classList[0]]
+    i.nextElementSibling.innerHTML=i.value
+    i.addEventListener('focus', (e)=>{
+        currentState = `pause`
+    })
+    i.addEventListener(`input`, (e)=>{
+        player[num].keys[e.target.classList[0]] = i.value
+        i.nextElementSibling.innerHTML=i.value
+    })
+})
+keyf.forEach((i,num)=>{
+    i.value=player[num].keys[i.classList[0]]
+    i.nextElementSibling.innerHTML=i.value
+    i.addEventListener('focus', (e)=>{
+        currentState = `pause`
+    })
+    i.addEventListener(`input`, (e)=>{
+        player[num].keys[e.target.classList[0]] = i.value
+        i.nextElementSibling.innerHTML=i.value
+    })
+})
