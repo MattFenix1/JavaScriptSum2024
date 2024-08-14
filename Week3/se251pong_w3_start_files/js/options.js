@@ -18,13 +18,22 @@ function showHide()
 
 -----------*/
 var fill = Array.from(document.querySelectorAll(`input[class="fill"]`))
-var output = Array.from(document.querySelectorAll(`.output`))
+var stroke = Array.from(document.querySelectorAll(`input[class="stroke"]`))
 fill.forEach((i,num)=>{
     i.value =pad[num].fill
     i.nextElementSibling.innerHTML = i.value
     i.addEventListener(`input`, (e)=>{
         e.target.style.color = i.value;
         o[num].fill = i.value;
+        i.nextElementSibling.innerHTML = i.value
+    })
+})
+stroke.forEach((i,num)=>{
+    i.value =pad[num].stroke
+    i.nextElementSibling.innerHTML = i.value
+    i.addEventListener(`input`, (e)=>{
+        e.target.style.color = i.value;
+        o[num].stroke = i.value;
         i.nextElementSibling.innerHTML = i.value
     })
 })
