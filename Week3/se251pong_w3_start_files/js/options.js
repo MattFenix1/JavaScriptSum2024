@@ -82,3 +82,15 @@ keyf.forEach((i,num)=>{
         i.nextElementSibling.innerHTML=i.value
     })
 })
+
+var bgchange = Array.from(document.querySelectorAll(`input[class="background"]`))
+
+bgchange.forEach((i,num)=>{
+    i.value=c.style.backgroundColor
+    i.nextElementSibling.innerHTML=i.value
+    i.addEventListener(`input`, (e)=>{
+        e.target.style.color=i.value
+        c.style.backgroundColor=i.value
+        i.nextElementSibling.innerHTML=i.value
+    })
+})
