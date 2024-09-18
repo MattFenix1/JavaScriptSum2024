@@ -12,6 +12,9 @@ submit.addEventListener(`click`, (e)=>{
     var regexName = /[A-Z\-]{1,}/i
     if(regexName.test(fname.value)===true){
         document.querySelector(`label[class="fname"]`).style.fontWeight = `bold`
+        document.querySelector(`label[class="fname"]`).style.color = `black`
+        fname.style.color = `black`
+        fname.nextElementSibling.innerHTML = ``
         counter += 1
     }else{
         document.querySelector(`label[class="fname"]`).style.color = `red`
@@ -21,6 +24,9 @@ submit.addEventListener(`click`, (e)=>{
     var regexName = /[A-Z\-]{1,}/i
     if(regexName.test(lname.value)===true){
         document.querySelector(`label[class="lname"]`).style.fontWeight = `bold`
+        document.querySelector(`label[class="lname"]`).style.color = `black`
+        lname.nextElementSibling.innerHTML = ``
+        lname.nextElementSibling.style.color = `red`
         counter += 1
     }else{
         document.querySelector(`label[class="lname"]`).style.color = `red`
@@ -30,6 +36,9 @@ submit.addEventListener(`click`, (e)=>{
     var regexEmail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi
     if(regexEmail.test(email.value)===true){
         document.querySelector(`label[class="email"]`).style.fontWeight = `bold`
+        document.querySelector(`label[class="email"]`).style.color = `black`
+        email.nextElementSibling.innerHTML = ``
+        email.nextElementSibling.style.color = `red`
         counter += 1
     }else{
         document.querySelector(`label[class="email"]`).style.color = `red`
@@ -38,6 +47,9 @@ submit.addEventListener(`click`, (e)=>{
     }
     if(cEmail.value === email.value){
         document.querySelector(`label[class="cEmail"]`).style.fontWeight = `bold`
+        document.querySelector(`label[class="cEmail"]`).style.color = `black`
+        cEmail.nextElementSibling.innerHTML = ``
+        cEmail.nextElementSibling.style.color = `red`
         counter += 1
     }else{
         document.querySelector(`label[class="cEmail"]`).style.color = `red`
@@ -47,6 +59,9 @@ submit.addEventListener(`click`, (e)=>{
     var regexPhone = /\d{10}/g
     if(regexPhone.test(phone.value)===true){
         document.querySelector(`label[class="phone"]`).style.fontWeight = `bold`
+        document.querySelector(`label[class="phone"]`).style.color = `black`
+        phone.nextElementSibling.innerHTML = ``
+        phone.nextElementSibling.style.color = `red`
         counter += 1
     }else{
         document.querySelector(`label[class="phone"]`).style.color = `red`
